@@ -1,8 +1,15 @@
-#!/usr/bin/env node
+#!/usr/bin/node
+const fs = require('fs');
 
-import fs from 'fs';
+const filePath = process.argv[2];
 
-fs.readFile(process.argv[2], 'utf8', function (error, content) {
-  console.log(error || content);
+fs.readFile(filePath, 'utf-8', (error, data) => {
+  if (error) {
+    console.error('An error occurred while reading the file:');
+    console.error(error);
+  } else {
+    console.log('File content:');
+    console.log(data);
+  }
 });
 
